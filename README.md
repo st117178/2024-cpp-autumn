@@ -1,2 +1,2 @@
-#2024-cpp-autumn
+# 2024-cpp-autumn
 Repository for programming Konoplyanik Artem Vyacheslavovich is a 2nd year student of St. Petersburg State University of Mechanics and Mathematics Faculty in the field of mechanics and mathematical modeling.

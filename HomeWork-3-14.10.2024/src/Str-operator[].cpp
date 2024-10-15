@@ -67,15 +67,12 @@ String String::operator[](int i)
 {
 	if (flag)
 	{
-		if (startInd == i)
-		{
-			return "";
-		}
 		String newStr(i, 0);
 		for (int k = 0; k < i - startInd; k++)
 		{
 			newStr.str[k] = this->str[k];
 		}
+		flag = false;
 		return newStr;
 
 	}
@@ -87,7 +84,6 @@ String String::operator[](int i)
 		newStr.str[k] = this->str[k + i];
 	}
 
-	int& j = i;
 	return newStr;
 }
 

@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Bankaccount.h"
+#include "BankAccount.h"
 
 class Bank {
 public:

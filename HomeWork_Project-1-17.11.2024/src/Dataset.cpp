@@ -325,8 +325,6 @@ void Dataset::setNameFromFile(const std::string name, int len)
 		temp[i] = _name[i];
 	}
 
-	delete[] _name;
-
 	temp[len - 1] = name;
 
 	_name = temp;

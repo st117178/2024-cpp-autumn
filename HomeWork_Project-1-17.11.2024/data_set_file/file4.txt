@@ -1,0 +1,6 @@
+71        high
+82        medium
+63        low
+544        high
+45        low
+66        medium

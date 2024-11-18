@@ -1,0 +1,4 @@
+0 100     cat     1.57      true    apple
+1 -25     dog     2.78      false   orange
+2 17      fish    3.45      true    grape
+3 0       bird    -0.99     false   lemon

@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-	Dataset data1("C://file1.txt", 0);
+	Dataset data1("../data_set_file/file1.txt", 0);
 	std::cout << data1 << std::endl;
 	data1.describe("nameC");
 	std::cout << data1[1] << std::endl;
@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 	std::cout << std::endl;
 	std::cout << "====================================================" << std::endl;
 
-	Dataset data2("C://file2.txt", 1);
+	Dataset data2("../data_set_file/file2.txt", 1);
 	std::cout << data2 << std::endl;
 	data2.describe("feature2");
 	std::cout << data2[3] << std::endl;
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 	data2.printList();
 	std::cout << "====================================================" << std::endl;
 
-	Dataset data3("C://file3.txt", "col", 0);
+	Dataset data3("../data_set_file/file3.txt", "col", 0);
 	std::cout << data3 << std::endl;
 	data3.describe("col1");
 	std::cout << data3[1] << std::endl;
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 	data3.printList();
 	std::cout << "====================================================" << std::endl;
 
-	Dataset data4("C://file4.txt", "col", 1);
+	Dataset data4("../data_set_file/file4.txt", "col", 1);
 	std::cout << data4 << std::endl;
 	data4.describe("cols1");
 	std::cout << data4[5] << std::endl;

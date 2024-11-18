@@ -1,0 +1,4 @@
+ nameA  nameB   nameC   nameD
+0 -5     apple   0.33    yes
+1 18     mango   4.11    no
+2 0      pear    2.67    maybe

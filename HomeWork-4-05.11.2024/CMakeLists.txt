@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(ProjectName)
+project(Hw4)
 
 include_directories(${CMAKE_SOURCE_DIR}/Bank_src ${CMAKE_SOURCE_DIR}/Text-editor_src)
 

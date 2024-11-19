@@ -3,13 +3,16 @@
 
 #include "BiLinkedList.h"
 
-class Dataset {
+class Dataset
+{
 public:
 	Dataset(const std::string fpath, bool isAddedIndexes);
 
-	Dataset(const std::string fpath, const std::string& name, bool isAddedIndexes);
+	Dataset(const std::string fpath, const std::string &name, bool isAddedIndexes);
 
 	~Dataset();
+
+	int getSizeDataSet();
 
 	void printList();
 
@@ -24,16 +27,16 @@ public:
 	void describe(const std::string name);
 
 	BiLinkedList operator[](int index);
-	friend std::ostream& operator<<(std::ostream& stream, const Dataset& dataset);
+	friend std::ostream &operator<<(std::ostream &stream, const Dataset &dataset);
 
 private:
 	const std::string fpath;
 	BiLinkedList data;
 
-	int* size = new int[2] {0};// size[0] - count of column, size[1] - count of line
+	int *size = new int[2]{0}; // size[0] - count of column, size[1] - count of line
 
-	std::string* _name;
-	int* _indexes;
+	std::string *_name;
+	int *_indexes;
 
 	void setNameFromFile(const std::string name, int len);
 	void setAutoName(int len, const std::string name);
@@ -41,12 +44,12 @@ private:
 
 	BiLinkedList getInsertionList(int index);
 
-	BiLinkedList* getListIndexLine(int index);
+	BiLinkedList *getListIndexLine(int index);
 	int getIndexName(const std::string name);
-	BiLinkedList* getListIndexColumn(int index);
+	BiLinkedList *getListIndexColumn(int index);
 
-	template<class T>
-	T countMaximum(BiLinkedList* list)
+	template <class T>
+	T countMaximum(BiLinkedList *list)
 	{
 		if (size[1] == 0)
 		{
@@ -54,10 +57,10 @@ private:
 		}
 		else
 		{
-			BiNode* max_node = list->getNodeIndex(*list, 0);
+			BiNode *max_node = list->getNodeIndex(*list, 0);
 			T max = void_convert<T>(max_node->data);
 
-			for (int i = 0; i < size[1];++i)
+			for (int i = 0; i < size[1]; ++i)
 			{
 				if (void_convert<T>(list->getNodeIndex(*list, i)->data) > max)
 				{
@@ -70,8 +73,8 @@ private:
 		}
 	}
 
-	template<class T>
-	T countMinimum(BiLinkedList* list)
+	template <class T>
+	T countMinimum(BiLinkedList *list)
 	{
 		if (size[1] == 0)
 		{
@@ -79,10 +82,10 @@ private:
 		}
 		else
 		{
-			BiNode* min_node = list->getNodeIndex(*list, 0);
+			BiNode *min_node = list->getNodeIndex(*list, 0);
 			T min = void_convert<T>(min_node->data);
 
-			for (int i = 0; i < size[1];++i)
+			for (int i = 0; i < size[1]; ++i)
 			{
 				if (void_convert<T>(list->getNodeIndex(*list, i)->data) < min)
 				{
@@ -95,8 +98,8 @@ private:
 		}
 	}
 
-	template<class T>
-	float countAverageValue(BiLinkedList* list)
+	template <class T>
+	float countAverageValue(BiLinkedList *list)
 	{
 		if (size[1] == 0)
 		{
@@ -106,7 +109,7 @@ private:
 		{
 			float sum = 0;
 
-			for (int i = 0; i < size[1];++i)
+			for (int i = 0; i < size[1]; ++i)
 			{
 				sum += void_convert<T>(list->getNodeIndex(*list, i)->data);
 			}
@@ -117,8 +120,8 @@ private:
 		}
 	}
 
-	template<class T>
-	float countStandartDeviation(BiLinkedList* list)
+	template <class T>
+	float countStandartDeviation(BiLinkedList *list)
 	{
 		if (size[1] == 0)
 		{
@@ -129,7 +132,7 @@ private:
 			float sum_square = 0;
 			float average = countAverageValue<T>(list);
 
-			for (int i = 0; i < size[1];++i)
+			for (int i = 0; i < size[1]; ++i)
 			{
 				sum_square += (void_convert<T>(list->getNodeIndex(*list, i)->data) - average) * (void_convert<T>(list->getNodeIndex(*list, i)->data) - average);
 			}
@@ -139,16 +142,16 @@ private:
 		}
 	}
 
-	template<class T>
-	T void_convert(void* value)//void* to int
+	template <class T>
+	T void_convert(void *value) // void* to int
 	{
-		return *static_cast<T*>(value);
+		return *static_cast<T *>(value);
 	}
 
 	void dispose();
 
-	bool isInteger(const std::string& s);
-	bool isFloat(const std::string& s);
+	bool isInteger(const std::string &s);
+	bool isFloat(const std::string &s);
 };
 
 #endif

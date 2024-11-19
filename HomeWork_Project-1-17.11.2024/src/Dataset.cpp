@@ -560,4 +560,9 @@ bool Dataset::isFloat(const std::string &s)
 	return isPointFound;
 }
 
+int Dataset::getSizeDataSet()
+{
+	return size[0] * size[1];
+}
+
 #endif

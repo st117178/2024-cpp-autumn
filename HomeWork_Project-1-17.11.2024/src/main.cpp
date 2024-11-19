@@ -1,9 +1,6 @@
-#include "DataType.h"
-#include "BiNode.h"
-#include "BiLinkedList.h"
 #include "Dataset.h"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	Dataset data1("./data_set_file/file1.txt", 0);
 	std::cout << data1 << std::endl;

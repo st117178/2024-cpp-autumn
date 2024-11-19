@@ -8,7 +8,7 @@ Dataset::Dataset(const std::string fpath, bool isAddedIndexes) : fpath(fpath)
 	std::ifstream in;
 	in.open(fpath);
 
-	bool flag = true;//flag for first '\n'
+	bool flag = true; // flag for first '\n'
 
 	std::string text;
 
@@ -59,7 +59,7 @@ Dataset::Dataset(const std::string fpath, bool isAddedIndexes) : fpath(fpath)
 	in.close();
 }
 
-Dataset::Dataset(const std::string fpath, const std::string& name, bool isAddedIndexes) : fpath(fpath)
+Dataset::Dataset(const std::string fpath, const std::string &name, bool isAddedIndexes) : fpath(fpath)
 {
 	int length = 0;
 
@@ -162,12 +162,12 @@ void Dataset::insert(int index)
 	}
 
 	BiLinkedList inserted = getInsertionList(index);
-	BiLinkedList* newList = new BiLinkedList;
+	BiLinkedList *newList = new BiLinkedList;
 
 	DataType type;
-	void* value;
+	void *value;
 
-	for (int i = 0; i < size[0] * (size[1] + 1);++i)
+	for (int i = 0; i < size[0] * (size[1] + 1); ++i)
 	{
 		if (i < index * size[0])
 		{
@@ -215,7 +215,7 @@ void Dataset::remove(int index)
 	}
 	else
 	{
-		BiLinkedList* newList = new BiLinkedList;
+		BiLinkedList *newList = new BiLinkedList;
 
 		int i = 0;
 		while (i < size[0] * size[1])
@@ -227,21 +227,21 @@ void Dataset::remove(int index)
 			else
 			{
 				DataType type = data.getNodeIndex(data, i)->type;
-				void* value = data.getNodeIndex(data, i)->data;
+				void *value = data.getNodeIndex(data, i)->data;
 
 				if (type == DataType::INT)
 				{
-					int val = *static_cast<int*>(value);
+					int val = *static_cast<int *>(value);
 					newList->PushTail(val);
 				}
 				else if (type == DataType::FLOAT)
 				{
-					float val = *static_cast<float*>(value);
+					float val = *static_cast<float *>(value);
 					newList->PushTail(val);
 				}
 				else if (type == DataType::STRING)
 				{
-					std::string val = *static_cast<std::string*>(value);
+					std::string val = *static_cast<std::string *>(value);
 					newList->PushTail(val);
 				}
 
@@ -268,7 +268,7 @@ void Dataset::describe(const std::string name)
 	}
 	else
 	{
-		BiLinkedList* list_column = getListIndexColumn(index_name);
+		BiLinkedList *list_column = getListIndexColumn(index_name);
 
 		if (list_column->getNodeIndex(*list_column, 0)->type == DataType::FLOAT)
 		{
@@ -284,7 +284,6 @@ void Dataset::describe(const std::string name)
 			average = countAverageValue<int>(list_column);
 			standart_deviation = countStandartDeviation<int>(list_column);
 		}
-
 
 		if (max == -1 || min == -1 || average == -1 || standart_deviation == -1)
 		{
@@ -302,7 +301,7 @@ void Dataset::describe(const std::string name)
 
 BiLinkedList Dataset::operator[](int index)
 {
-	BiLinkedList* list = new BiLinkedList;
+	BiLinkedList *list = new BiLinkedList;
 	if (index > size[1] || index < 0)
 	{
 		return *list;
@@ -311,7 +310,7 @@ BiLinkedList Dataset::operator[](int index)
 	list = getListIndexLine(index);
 	return *list;
 }
-std::ostream& operator<<(std::ostream& stream, const Dataset& dataset)//just list data
+std::ostream &operator<<(std::ostream &stream, const Dataset &dataset) // just list data
 {
 	stream << dataset.data;
 	return stream;
@@ -319,7 +318,7 @@ std::ostream& operator<<(std::ostream& stream, const Dataset& dataset)//just lis
 
 void Dataset::setNameFromFile(const std::string name, int len)
 {
-	std::string* temp = new std::string[len];
+	std::string *temp = new std::string[len];
 	for (int i = 0; i < len - 1; ++i)
 	{
 		temp[i] = _name[i];
@@ -332,7 +331,7 @@ void Dataset::setNameFromFile(const std::string name, int len)
 void Dataset::setAutoName(int len, const std::string name)
 {
 	_name = new std::string[len];
-	for (int i = 0; i < len;i++)
+	for (int i = 0; i < len; i++)
 	{
 		_name[i] = name + std::to_string(i);
 	}
@@ -340,7 +339,7 @@ void Dataset::setAutoName(int len, const std::string name)
 void Dataset::setIndexes(int wid)
 {
 	_indexes = new int[wid];
-	for (int i = 0; i < wid;i++)
+	for (int i = 0; i < wid; i++)
 	{
 		_indexes[i] = i;
 	}
@@ -402,12 +401,12 @@ BiLinkedList Dataset::getInsertionList(int index)
 	return cin_List;
 }
 
-BiLinkedList* Dataset::getListIndexLine(int index)
+BiLinkedList *Dataset::getListIndexLine(int index)
 {
-	BiLinkedList* newList = new BiLinkedList;
+	BiLinkedList *newList = new BiLinkedList;
 
 	DataType type;
-	void* value;
+	void *value;
 
 	for (int i = 0; i < size[0]; ++i)
 	{
@@ -421,12 +420,12 @@ BiLinkedList* Dataset::getListIndexLine(int index)
 		}
 		else if (type == DataType::FLOAT)
 		{
-			float added = void_convert < float >(value);
+			float added = void_convert<float>(value);
 			newList->PushTail(added);
 		}
 		else if (type == DataType::STRING)
 		{
-			std::string added = void_convert < std::string >(value);
+			std::string added = void_convert<std::string>(value);
 			newList->PushTail(added);
 		}
 	}
@@ -442,14 +441,14 @@ int Dataset::getIndexName(const std::string name)
 			return i;
 		}
 	}
-	return -1;// if name does not exist
+	return -1; // if name does not exist
 }
-BiLinkedList* Dataset::getListIndexColumn(int index)//for string variable, we return list integer number, number is count of characters of line
+BiLinkedList *Dataset::getListIndexColumn(int index) // for string variable, we return list integer number, number is count of characters of line
 {
-	BiLinkedList* newList = new BiLinkedList;
+	BiLinkedList *newList = new BiLinkedList;
 
 	DataType type;
-	void* value;
+	void *value;
 
 	for (int i = 0; i < size[1]; ++i)
 	{
@@ -463,7 +462,7 @@ BiLinkedList* Dataset::getListIndexColumn(int index)//for string variable, we re
 		}
 		else if (type == DataType::FLOAT)
 		{
-			float added = void_convert < float >(value);
+			float added = void_convert<float>(value);
 			newList->PushTail(added);
 		}
 		else if (type == DataType::STRING)
@@ -491,7 +490,7 @@ void Dataset::dispose()
 	}
 }
 
-bool Dataset::isInteger(const std::string& s)
+bool Dataset::isInteger(const std::string &s)
 {
 	if (s.empty())
 	{
@@ -518,7 +517,7 @@ bool Dataset::isInteger(const std::string& s)
 
 	return true;
 }
-bool Dataset::isFloat(const std::string& s)
+bool Dataset::isFloat(const std::string &s)
 {
 	if (s.empty())
 	{
@@ -537,7 +536,8 @@ bool Dataset::isFloat(const std::string& s)
 		start = 1;
 	}
 
-	for (int i = start; i < s.length(); ++i) {
+	for (int i = start; i < s.length(); ++i)
+	{
 		if (s[i] == '.')
 		{
 			if (isPointFound)

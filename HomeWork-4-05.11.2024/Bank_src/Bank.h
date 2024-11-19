@@ -3,15 +3,17 @@
 
 #include <iostream>
 #include <vector>
-#include "Bankaccount.h"
+#include "BankAccount.h"
 
-class Bank {
+class Bank
+{
 public:
-	void AddAccount(BankAccount* account);
+	void AddAccount(BankAccount *account);
 	double GetTotalBalnce();
 	void PrintAllAccounts();
+
 private:
-	std::vector <BankAccount*> accounts;
+	std::vector<BankAccount *> accounts;
 };
 
 #endif
